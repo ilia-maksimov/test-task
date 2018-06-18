@@ -1,6 +1,7 @@
 import * as React from 'react';
 import './cell.styles.css';
-import { makeAMove } from './../helpers/algorithms/fieldControl';
+import { makeAMove, changeMove } from './../../helpers/algorithms/fieldControl';
+import { computerPlayer } from './../../helpers/algorithms/computerPlayer';
 
 export class Cell extends React.Component {
   render() {
@@ -16,6 +17,8 @@ export class Cell extends React.Component {
   }
 
   onClick() {
-    makeAMove(this.props.id);
+    makeAMove(this.props.cellPosition);
+    changeMove();
+    computerPlayer();
   }
 }
