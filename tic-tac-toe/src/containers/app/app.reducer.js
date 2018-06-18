@@ -1,7 +1,8 @@
-import { SET_FIELD } from './app.actions';
+import { SET_FIELD, CHANGE_PLAYER, SET_NEW_ARRAY } from './app.actions';
 
 const initialState = {
-	field: []
+	isPlayerMove: true,
+	field: null
 }
 
 export const appReducer = (state = initialState, action) => {
@@ -10,6 +11,16 @@ export const appReducer = (state = initialState, action) => {
 			return {
 				...state,
 				field: action.field
+			}
+		case CHANGE_PLAYER:
+			return {
+				...state,
+				isPlayerMove: action.isPlayerMove
+			}
+		case SET_NEW_ARRAY:
+			return {
+				...state,
+				field: action.newArray
 			}
 		default:
 			return state

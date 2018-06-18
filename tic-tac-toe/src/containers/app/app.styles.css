@@ -1,4 +1,13 @@
 .app {
+  margin: 0;
+}
+.headText {
+  display: flex;
+  justify-content: center;
+  font-size: 4em;
+  font-family: fantasy;
+}
+.field {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
