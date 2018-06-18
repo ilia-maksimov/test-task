@@ -1,5 +1,4 @@
 export const array = [];
-export let isPlayerMove = true;
 
 export function getField() {
   return array;
@@ -21,14 +20,14 @@ export function createGameField(windowSize, cellSize) {
   }
 }
 
-export function changeMove() {
-  isPlayerMove = !isPlayerMove;
-}
-
-export function makeAMove(cellPosition) {
+export function makeAMove(cellPosition, isPlayerMove, field) {
+  let array = field;
   if (isPlayerMove) {
     array[cellPosition[0]][cellPosition[1]].value = 'x';
+    console.log('makeMove', array)
+    return array;
   } else {
     array[cellPosition[0]][cellPosition[1]].value = 'o';
+    return array;
   }
 }
