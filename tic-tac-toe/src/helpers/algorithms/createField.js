@@ -1,7 +1,16 @@
 export const array = [];
 
+export function getField() {
+  return array;
+}
+
 export function countFieldSize(windowSize, cellSize) {
-  return Math.floor(windowSize / cellSize);
+  const boardSize = Math.floor(windowSize / cellSize);
+  if (boardSize >= 5) {
+    return boardSize;
+  } else {
+    return 5;
+  }
 }
 
 export function createGameField(windowSize, cellSize) {
@@ -10,16 +19,8 @@ export function createGameField(windowSize, cellSize) {
   for (let i = 0; i < size; i++) {
     array.push([]);
     for(let j = 0; j < size; j++) {
-      array[i].push({ id: count, value: 'o' });
+      array[i].push({ id: count, position: [i, j], value: null });
       count++;
     }
   }
-}
-
-export function makeAMove(cellId) {
-  array.map((it) => it.map((it) => {
-    if (it.id === cellId) {
-      return it.value = 'x';
-    }
-  }))
 }
