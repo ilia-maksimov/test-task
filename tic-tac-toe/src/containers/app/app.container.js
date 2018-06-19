@@ -8,7 +8,7 @@ import { SET_FIELD } from './app.actions';
 class App extends React.Component {
   constructor(props) {
     super(props);
-    createGameField(document.documentElement.clientWidth, 50);
+    createGameField(document.documentElement.clientWidth, 100);
     const field = getField();
     this.props.setField(field);
   }
@@ -17,9 +17,9 @@ class App extends React.Component {
     return (
       <div className = 'app'>
         <div className = 'headText'>
-          <span>
+          <div>
             { this.props.isPlayerMove ? 'Your turn!' : 'Computer thinking' }
-          </span>
+          </div>
         </div>
         <div className = 'field'>
           { 

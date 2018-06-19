@@ -1,8 +1,9 @@
-import { SET_FIELD, CHANGE_PLAYER, SET_NEW_ARRAY } from './app.actions';
+import { SET_FIELD, CHANGE_PLAYER, SET_NEW_ARRAY, SET_WINNER } from './app.actions';
 
 const initialState = {
 	isPlayerMove: true,
-	field: null
+	field: null,
+	winner: null
 }
 
 export const appReducer = (state = initialState, action) => {
@@ -21,6 +22,11 @@ export const appReducer = (state = initialState, action) => {
 			return {
 				...state,
 				field: action.newArray
+			}
+		case SET_WINNER:
+			return {
+				...state,
+				winner: action.winner
 			}
 		default:
 			return state
