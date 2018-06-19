@@ -1,3 +1,6 @@
+import { store } from './../../index';
+import { setWinner } from './../../containers/app/app.actions';
+
 function getRow(array, cellPosition) {
   const boardLength = array[0].length;
   let y = cellPosition[0];
@@ -81,9 +84,9 @@ function checkWin(array, isPlayerMove) {
       count++
       if (count === 5) {
         if (isPlayerMove) {
-          alert('Player win')
+          store.dispatch(setWinner('You'))
         } else {
-          alert('Computer win')
+          store.dispatch(setWinner('Computer'))
         }
       }
     } else {
@@ -100,5 +103,5 @@ export function isWinner(cellPosition, isPlayerMove, field) {
   checkWin(row, isPlayerMove);
   checkWin(column, isPlayerMove);
   checkWin(mainDiagonal, isPlayerMove);
-  checkWin(diagonal, isPlayerMove)
+  checkWin(diagonal, isPlayerMove);
 }

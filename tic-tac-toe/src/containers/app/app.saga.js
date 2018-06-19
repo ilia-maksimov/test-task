@@ -12,14 +12,21 @@ const getIsPlayerMove = (state) => {
   return !state.appReducer.isPlayerMove;
 }
 
+const getWinner = (state) => {
+  return state.appReducer.winner
+}
+
 function* computerMoveAsync(action) {
   try {
-    const field = yield select(getBoard);
-    const choosenCell = yield call(computerPlayer, field);
-    const newField = yield call(makeAMove, choosenCell, false, field);
-    yield call(isWinner, choosenCell, false, newField);
-    const isPlayerMove = yield select(getIsPlayerMove);
-    yield put({ type: CHANGE_PLAYER, isPlayerMove });
+    const winner = yield select(getWinner);
+    if (!winner) {
+      const field = yield select(getBoard);
+      const choosenCell = yield call(computerPlayer, field);
+      const newField = yield call(makeAMove, choosenCell, false, field);
+      yield call(isWinner, choosenCell, false, newField);
+      const isPlayerMove = yield select(getIsPlayerMove);
+      yield put({ type: CHANGE_PLAYER, isPlayerMove });
+    }
   } catch (error) {
     console.log(error);
   }

@@ -10,7 +10,7 @@ import registerServiceWorker from './registerServiceWorker';
 
 const history = createHistory();
 const initialState = {};
-const store = configureStore(initialState, history);
+export const store = configureStore(initialState, history);
 
 ReactDOM.render(
 	<Provider store = { store }>

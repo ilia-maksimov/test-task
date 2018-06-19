@@ -13,7 +13,7 @@ class Cell extends React.Component {
     return (
       <div
         className = 'cell'
-        onClick = { value === null && isPlayerMove ? this.onClick.bind(this) : null}
+        onClick = { value === null && isPlayerMove && !this.props.winner ? this.onClick.bind(this) : null}
       >
         { value === 'o' && <img  src = { tomato } className = 'picture' alt = 'tomato' /> }
         { value === 'x' && <img  src = { fork } className = 'picture' alt = 'fork' /> }
@@ -33,7 +33,8 @@ class Cell extends React.Component {
 const mapStateToProps = ({ appReducer }) => {
   return {
     field: appReducer.field,
-    isPlayerMove: appReducer.isPlayerMove
+    isPlayerMove: appReducer.isPlayerMove,
+    winner: appReducer.winner
   }
 }
 
